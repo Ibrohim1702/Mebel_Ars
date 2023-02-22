@@ -1,0 +1,79 @@
+{% extends 'site/base.html' %}
+{% block content %}
+{% load static %}
+	<div id="wrapper">
+		{% include 'site/private/header.html'%}
+		<a href="" class="fixed"><img src="{% static 'images/paw.svg' %}" alt=""></a>
+		<section class="main">
+			<div class="holder">
+				<div class="contacts">
+					<div class="contacts-side">
+						<h2 class="title-min">Контакты</h2>
+						<ul class="contacts-list">
+							<li>
+								<div class="contacts-text">Телефон для справок и заказов:</div>
+								<div class="contacts-info"><a href="tel:+84957405344">+998 91 777-58-85</a></div>
+							</li>
+							<li>
+								<div class="contacts-text">Информационные вопросы:</div>
+								<div class="contacts-info"><a href="https://t.me/ibrokhm1">info@mebel-ars.ru</a></div>
+							</li>
+							<li>
+								<div class="contacts-text">Отдел рекламаций:</div>
+								<div class="contacts-info"><a href="mailto:service@mebel-ars.ru">service@mebel-ars.ru</a></div>
+							</li>
+							<li>
+								<div class="contacts-text">Отдел продаж:</div>
+								<div class="contacts-info"><a href="mailto:sales@mebel-ars.ru">sales@mebel-ars.ru</a></div>
+							</li>
+							<li>
+								<div class="contacts-text">По вопросам сотрудничества:</div>
+								<div class="contacts-info"><a href="mailto:director@mebel-ars.ru">director@mebel-ars.ru</a></div>
+							</li>
+							<li>
+								<div class="contacts-text">Время работы офиса</div>
+								<div class="contacts-info">с 9<sup>00</sup> до 21<sup>00</sup></div>
+							</li>
+						</ul>
+					</div>
+					<div class="contacts-form">
+						<h2 class="title-min">Chatting with admins</h2>
+						<form method="post">
+							{% csrf_token %}
+							<fieldset>
+								<input type="text" name="name" class="input" placeholder="Name">
+								<input type="text" name="phone" class="input" placeholder="Phone">
+								<textarea name="message" id="" cols="30" rows="10" class="textarea" placeholder="message"></textarea>
+								<button class="button">
+									<span class="button-wrap">Send message</span>
+								</button>
+								{% if add %}
+									<button style="background-color:green ; padding: 10px;">
+										Your message sent
+									</button>
+								{% endif %}
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>	
+		</section>
+		<section class="bottom">
+			<div class="holder">
+				<div class="bottom-block">
+					<div class="bottom-col">
+						<div class="bottom-text">Не можете определиться с моделью?</div>
+						<div class="bottom-title">Свяжитесь с нами</div>
+					</div>
+					<div class="bottom-col">
+						<div class="bottom-phone"><a href="tel:+88008008080">8 800 800 80 80</a></div>
+						<div class="bottom-text">Мы работаем ежедневно с 9<sup>00</sup> до 20<sup>00</sup></div>	
+					</div>
+				</div>
+			</div>	
+		</section>
+				{% include 'site/private/footer.html'%}
+	</div>
+	{% endblock %}
+</html>
+

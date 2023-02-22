@@ -1,0 +1,143 @@
+{% extends 'dashboard/base.html'%}
+
+
+
+{% block content %}
+
+<div class="col-md-8 col-md-offset-2">
+    <div class="card card-wizard" id="wizardCard">
+        <form id="wizardForm" method="post">
+            {% csrf_token %}
+            <div class="card-header text-center">
+                <h4 class="card-title">Awesome Wizard</h4>
+                <p class="category">Split a complicated flow in multiple steps</p>
+            </div>
+            <div class="card-content">
+                    <div class="tab-pane" id="tab1">
+                        <h5 class="text-center"> There you can add new employers </h5>
+                        <div class="row">
+                            <div class="col-md-5 col-md-offset-1">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        First Name
+                                    </label>
+                                    <input class="form-control"
+                                           type="text"
+                                           name="ism_familya"
+                                           placeholder="Ibrohim"
+                                           value="{{ root.ism_familya }}"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label>
+                                        Position
+                                    </label>
+                                    <input class="form-control"
+                                           type="text"
+                                           name="lavozimi"
+                                           required="true"
+                                           placeholder="Meneger"
+                                           value="{{ root.lavozimi }}"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                       <div class="row">
+                            <div class="col-md-5 col-md-offset-1">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Age
+                                    </label>
+                                    <input class="form-control"
+                                           type="number"
+                                           name="yoshi"
+                                           placeholder="17"
+                                           value="{{ root.yoshi }}"
+                                    />
+                                </div>
+                            </div>
+                            <div/>
+                        </div>
+
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label class="control-label">Salary</label>
+                                    <input class="form-control"
+                                           type="number"
+                                           name="salary"
+                                           placeholder="1000000"
+                                           value="{{ root.salary }}"
+                                    />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        City
+                                    </label>
+                                    <!--     IMPORTANT! - the "bootstrap select picker" is not compatible with jquery.validation.js, that's why we use the "default select" inside this wizard. We will try to contact the guys who are responsibble for the "bootstrap select picker" to find a solution. Thank you for your patience.
+                                     -->
+                                    <select name="city" class="form-control">
+                                        value="{{ root.city }}"
+                                        <option selected="">Toshkent</option>
+                                        <option>Andijon</option>
+                                        <option>Farg`ona</option>
+                                        <option>Namangan</option>
+                                        <option>Qashqadaryo</option>
+                                        <option>Surxandaryo</option>
+                                        <option>Buxoro</option>
+                                        <option>Samarqand</option>
+                                        <option>Jizzax</option>
+                                        <option>Navoiy</option>
+                                        <option>Sirdaryo</option>
+                                        <option>Xorazm</option>
+
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <div class="card-footer">
+                <a href="{% url 'ctg_list'%}">
+                <button type="button" class="btn btn-wd btn-default btn-fill btn-move-left">
+                                <span class="btn-label">
+                                    <i class="ti-car"></i>
+                                </span>
+                    <br>
+                                Back
+                </button>
+                    </a>
+                {% if root %}
+                <button type="submit" class="btn btn-wd btn-success btn-fill btn-magnify pull-right">
+                                <span class="btn-label">
+                                    <i class="fa fa-check"></i>
+                                </span>
+                    <br>
+                               Save
+                </button>
+                {% else %}
+                <button type="submit" class="btn btn-wd btn-success btn-fill btn-magnify pull-right">
+                                <span class="btn-label">
+                                    <i class="fa fa-check"></i>
+                                </span>
+                    <br>
+                               Add new employers
+                </button>
+                {% endif %}
+                <div class="clearfix"></div>
+            </div>
+                </form>
+                </div>
+            </div>
+
+
+    </div>
+</div>
+
+{% endblock %}

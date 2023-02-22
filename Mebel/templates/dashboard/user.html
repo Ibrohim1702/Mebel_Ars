@@ -1,0 +1,100 @@
+{% extends 'dashboard/base.html'%}
+{% block content %}
+{% load static %}
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-4 col-md-5">
+				<div class="card card-user">
+					<div class="image">
+						<img src="{% static 'dashboard/assets/img/background.jpg' %}" alt="..."/>
+					</div>
+					<div class="card-content">
+						<div class="author">
+						  <img class="avatar border-white" src="{% static 'dashboard/assets/img/faces/face-2.jpg' %}" alt="..."/>
+						  <h4 class="card-title"> {{ request.user.first_name }} {{ request.user.last_name }}<br />
+							 <a href="{{ request.user.email }}"><small>{{ request.user.email }}</small></a>
+						  </h4>
+						</div>
+						<p class="description text-center">
+							{{ request.user.bio }}
+					</div>
+					<hr>
+				</div>
+			</div>
+			<div class="col-lg-8 col-md-7">
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">Edit Profile</h4>
+					</div>
+					<div class="card-content">
+						<form method="post">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-md-5">
+									<div class="form-group">
+										<label>Company</label>
+										<input type="text" name="company" class="form-control border-input" placeholder="Company" value="{{ request.user.company }}">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label>Username</label>
+										<input type="text" name="username" class="form-control border-input" placeholder="Username" value="{{ request.user.username }}">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="exampleInputEmail1">Phone</label>
+										<input type="tel" class="form-control border-input" name="phone" value="{{ request.user.phone }}" >
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>First Name</label>
+										<input type="text" class="form-control border-input"   placeholder="Company"  name="first_name" value="{{ request.user.first_name }}">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Last Name</label>
+										<input type="text" class="form-control border-input" placeholder="Last Name" name="last_name" value="{{ request.user.last_name }}">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Address</label>
+										<input type="text" name="location" class="form-control border-input" placeholder="Home Address" value="{{ request.user.location }}">
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Bio</label>
+										<textarea rows="5" name="bio" class="form-control border-input" placeholder="Here can be your description"> {{ request.user.bio }} </textarea>
+
+
+									</div>
+								</div>
+							</div>
+							<div class="text-center">
+								<button type="submit" class="btn btn-info btn-fill btn-wd">Update Profile</button>
+							</div>
+							<div class="clearfix"></div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
+

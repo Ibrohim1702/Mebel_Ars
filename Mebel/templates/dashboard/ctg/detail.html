@@ -1,0 +1,95 @@
+{% extends 'dashboard/base.html' %}
+
+
+
+{% block content %}
+
+<div class="col-md-12">
+	                        <div class="card">
+	                            <div class="card-header">
+	                                <h4 class="card-title">Regular Table with Colors</h4>
+	                                <p class="category">Here is a subtitle for this table</p>
+	                            </div>
+	                            <div class="card-content table-responsive table-full-width">
+	                                <table class="table table-hover">
+	                                    <thead>
+	                                        <th class="success">Key</th>
+	                                    	<th class="success">Value</th>
+	                                    </thead>
+	                                    <tbody>
+	                                        <tr>
+													<tr>
+														<td>ID</td>
+														<td>{{ ctg.id }}</td>
+													</tr>
+													<tr>
+														<td>Name</td>
+														<td>{{ ctg.ism_familya }}</td>
+													</tr>
+													<tr>
+														<td>Salary</td>
+														<td>{{ ctg.salary }}</td>
+													</tr>
+													<tr>
+														<td>City</td>
+														<td>{{ ctg.city }}</td>
+													</tr>
+													<tr>
+														<td>Position</td>
+														<td>{{ ctg.lavozimi }}</td>
+													</tr>
+													<tr>
+														<td>Age</td>
+														<td>{{ ctg.yoshi }}</td>
+													</tr>
+											</tr>
+
+	                                    </tbody>
+
+	                                </table>
+
+	                            </div>
+	                        </div>
+
+								<a href="{% url 'ctg_del' pk=ctg.id %}">
+								<button type="button" class="btn btn-wd btn-danger btn-fill btn-rotate ">
+												<span class="btn-label">
+													<i class="ti-trash"></i>
+												</span>
+									<br>
+												Delete
+								</button>
+								</a>
+								<a href="{% url 'ctg_edit' pk=ctg.id%}">
+								<button type="button" class="btn btn-wd btn-info btn-fill btn-rotate ">
+	                                            <span class="btn-label">
+	                                                <i class="ti-reload"></i>
+	                                            </span>
+									<br>
+	                                            Edit
+								</button>
+								</a>
+								<a href="{% url 'ctg_list'%}">
+								<button type="button" class="btn btn-wd btn-default btn-fill btn-move-left">
+	                                            <span class="btn-label">
+	                                                <i class="ti-car"></i>
+	                                            </span>
+									<br>
+	                                            Back
+								</button>
+								</a>
+								<a href="{% url 'ctg_list'%}">
+								<button type="button" class="btn btn-wd btn-success btn-fill btn-magnify pull-right">
+	                                            <span class="btn-label">
+	                                                <i class="fa fa-check"></i>
+	                                            </span>
+									<br>
+	                                            Success
+								</button>
+								</a>
+
+	                    </div>
+
+
+
+{% endblock %}

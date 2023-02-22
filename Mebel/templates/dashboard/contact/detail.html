@@ -1,0 +1,62 @@
+{% extends 'dashboard/base.html' %}
+
+
+
+{% block content %}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Regular Table with Colors</h4>
+            <p class="category">Here is a subtitle for this table</p>
+        </div>
+        <div class="card-content table-responsive table-full-width">
+            <table class="table table-hover">
+                <thead>
+                    <th class="success">Key</th>
+                    <th class="success">Value</th>
+                </thead>
+                <tbody>
+                    <tr>
+                            <tr>
+                                <td>ID</td>
+                                <td>{{ cntc.id }}</td>
+                            </tr>
+                            <tr>
+                                <td>Name</td>
+                                <td>{{ cntc.name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>{{ cntc.phone }}</td>
+                            </tr>
+                            <tr>
+                                <td>Message</td>
+                                <td>{{ cntc.message }}</td>
+                            </tr>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+
+        <a href="{% url 'contact_list'%}">
+        <button type="button" class="btn btn-wd btn-default btn-fill btn-move-left">
+                        <span class="btn-label">
+                            <i class="ti-car"></i>
+                        </span>
+            <br>
+                        Back
+        </button>
+        </a>
+
+</div>
+
+
+
+{% endblock %}
