@@ -84,7 +84,12 @@ WSGI_APPLICATION = 'Mebel.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': "dfm3k14bh54q4f",
+        "HOST": "ec2-54-157-16-196.compute-1.amazonaws.com",
+        "USER": "xlwuirlsftrutt",
+        "PORT": "5432",
+        "PASSWORD": "85d0c85697bf6cac3e3261ac6fed99042716ee8604cdf039445d79abe86ff850"
+
     }
 }
 
