@@ -6,7 +6,14 @@ from .models import *
 
 def index(requests):
     print(requests.user)
+
+    fresh = Product.objects.all().order_by("-pk")
+    # top = ProductCtg.objects.filters("-views")
+
     ctx = {
+        "fresh": fresh,
+        # "top": top,
+
 
     }
     return render(requests, "site/index.html", ctx)

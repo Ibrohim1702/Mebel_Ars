@@ -48,242 +48,52 @@
 				<div class="product-section">
 					<h2 class="title">Новинки сезона</h2>
 					<div class="catalog-slider">
-						<div class="catalog-slide">
-							<div class="catalog-item">
-								<div class="catalog-inner">
-									<div class="catalog-icons">
-										<a href="" class="catalog-up"></a>
-										<a href="" class="catalog-fav"></a>
-									</div>
-									<div class="catalog-img">
-										<div class="catalog-img-slide"><a href=""><img src="{% static 'images/media/c1.jpg' %}" alt=""></a></div>
-										<div class="catalog-img-slide"><a href=""><img src="{% static 'images/media/c2.jpg' %}" alt=""></a></div>
-									</div>
-									<div class="catalog-category"><a href="">Еврокнижка</a></div>
-									<div class="catalog-name"><a href="">Фиджи</a></div>
-									<div class="catalog-price">5 500 ₽</div>
-									<div class="catalog-hidden	">
-										<div class="catalog-buttons">
-											<a href="{% url 'cntc'%}" class="button-min">Купить</a>
-											<a href="{% url 'cart'%}" class="button-min button-light">в корзину</a>
+						{% for i in fresh %}
+							{% if forloop.counter <= 4 %}
+								<div class="catalog-slide">
+								<div class="catalog-item">
+									<div class="catalog-inner">
+										<div class="catalog-icons">
+											<a href="" class="catalog-up"></a>
+											<a href="" class="catalog-fav"></a>
 										</div>
-										<div class="catalog-size">
-											<div class="size-title">Габаритные размеры</div>
-											<div class="size-line">
-												<div class="size-item">Длина <br>233см</div>
-												<div class="size-item">Ширина <br>107см</div>
-												<div class="size-item">Высота <br>90см</div>
+										<div class="catalog-img">
+											<div class="catalog-img-slide"><a href=""><img src="{{ i.img.url }}" alt=""></a></div>
+											<div class="catalog-img-slide"><a href=""><img src="{{ i.img1.url }}" alt=""></a></div>
+										</div>
+										<div class="catalog-price">{{ i.ctg }}</div>
+										<div class="catalog-name"><a href="">{{ i.name_uz }}</a></div>
+										<div class="catalog-price">{{ i.price }}</div>
+										<div class="catalog-hidden	">
+											<div class="catalog-buttons">
+												<a href="{% url 'cntc'%}" class="button-min">Купить</a>
+												<a href="{% url 'cart'%}" class="button-min button-light">в корзину</a>
 											</div>
-										</div>
-										<div class="catalog-size">
-											<div class="size-title">Спальное место</div>
-											<div class="size-line">
-												<div class="size-item">Длина <br>233см</div>
-												<div class="size-item">Ширина <br>107см</div>
-												<div class="size-item">Высота <br>90см</div>
+											<div class="catalog-size">
+												<div class="size-title">Габаритные размеры</div>
+												<div class="size-line">
+													<div class="size-item">Длина <br>{{ i.length }}</div>
+													<div class="size-item">Ширина <br>{{ i.width }}</div>
+													<div class="size-item">Высота <br>{{ i.height }}</div>
+												</div>
 											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="catalog-slide">
-							<div class="catalog-item">
-								<div class="catalog-inner">
-									<div class="catalog-icons">
-										<a href="" class="catalog-up"></a>
-										<a href="" class="catalog-fav"></a>
-									</div>
-									<div class="catalog-img">
-										<div class="catalog-img-slide"><a href=""><img src="{% static 'images/media/c2.jpg' %}" alt=""></a></div>
-										<div class="catalog-img-slide"><a href=""><img src="{% static 'images/media/c1.jpg' %}" alt=""></a></div>
-									</div>
-									<div class="catalog-category"><a href="">Выкатные диваны</a></div>
-									<div class="catalog-name"><a href="">Амстердам</a></div>
-									<div class="catalog-price">14 000 ₽</div>
-									<div class="catalog-hidden">
-										<div class="catalog-buttons">
-											<a href="{% url 'cntc'%}" class="button-min">Купить</a>
-											<a href="{% url 'cart'%}" class="button-min button-light">в корзину</a>
-										</div>
-										<div class="catalog-size">
-											<div class="size-title">Габаритные размеры</div>
-											<div class="size-line">
-												<div class="size-item">Длина <br>233см</div>
-												<div class="size-item">Ширина <br>107см</div>
-												<div class="size-item">Высота <br>90см</div>
-											</div>
-										</div>
-										<div class="catalog-size">
-											<div class="size-title">Спальное место</div>
-											<div class="size-line">
-												<div class="size-item">Длина <br>233см</div>
-												<div class="size-item">Ширина <br>107см</div>
-												<div class="size-item">Высота <br>90см</div>
+											<div class="catalog-size">
+												<div class="size-title">Спальное место</div>
+												<div class="size-line">
+													<div class="size-item">Длина <br>{{ i.length }}</div>
+													<div class="size-item">Ширина <br>{{ i.width }}</div>
+													<div class="size-item">Высота <br>{{ i.height }}</div>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="catalog-slide">
-							<div class="catalog-item">
-								<div class="catalog-inner">
-									<div class="catalog-icons">
-										<a href="" class="catalog-up"></a>
-										<a href="" class="catalog-fav"></a>
-									</div>
-									<div class="catalog-img">
-										<div class="catalog-img-slide"><a href=""><img src="{% static 'images/media/c3.jpg' %}" alt=""></a></div>
-										<div class="catalog-img-slide"><a href=""><img src="{% static 'images/media/c1.jpg' %}" alt=""></a></div>
-									</div>
-									<div class="catalog-category"><a href="">Угловые диваны</a></div>
-									<div class="catalog-name"><a href="">Мартин</a></div>
-									<div class="catalog-price">34 500 ₽</div>
-									<div class="catalog-hidden">
-										<div class="catalog-buttons">
-											<a href="{% url 'cntc'%}" class="button-min">Купить</a>
-											<a href="{% url 'cart'%}" class="button-min button-light">в корзину</a>
-										</div>
-										<div class="catalog-size">
-											<div class="size-title">Габаритные размеры</div>
-											<div class="size-line">
-												<div class="size-item">Длина <br>233см</div>
-												<div class="size-item">Ширина <br>107см</div>
-												<div class="size-item">Высота <br>90см</div>
-											</div>
-										</div>
-										<div class="catalog-size">
-											<div class="size-title">Спальное место</div>
-											<div class="size-line">
-												<div class="size-item">Длина <br>233см</div>
-												<div class="size-item">Ширина <br>107см</div>
-												<div class="size-item">Высота <br>90см</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="catalog-slide">
-							<div class="catalog-item">
-								<div class="catalog-inner">
-									<div class="catalog-icons">
-										<a href="" class="catalog-up"></a>
-										<a href="" class="catalog-fav"></a>
-									</div>
-									<div class="catalog-img">
-										<div class="catalog-img-slide"><a href=""><img src="{% static 'images/media/c4.jpg' %}" alt=""></a></div>
-										<div class="catalog-img-slide"><a href=""><img src="{% static 'images/media/c1.jpg' %}" alt=""></a></div>
-									</div>
-									<div class="catalog-category"><a href="">Аккордеон</a></div>
-									<div class="catalog-name"><a href="">Статус</a></div>
-									<div class="catalog-price">122 500 ₽</div>
-									<div class="catalog-hidden">
-										<div class="catalog-buttons">
-											<a href="{% url 'cntc'%}" class="button-min">Купить</a>
-											<a href="{% url 'cart'%}" class="button-min button-light">в корзину</a>
-										</div>
-										<div class="catalog-size">
-											<div class="size-title">Габаритные размеры</div>
-											<div class="size-line">
-												<div class="size-item">Длина <br>233см</div>
-												<div class="size-item">Ширина <br>107см</div>
-												<div class="size-item">Высота <br>90см</div>
-											</div>
-										</div>
-										<div class="catalog-size">
-											<div class="size-title">Спальное место</div>
-											<div class="size-line">
-												<div class="size-item">Длина <br>233см</div>
-												<div class="size-item">Ширина <br>107см</div>
-												<div class="size-item">Высота <br>90см</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="catalog-slide">
-							<div class="catalog-item">
-								<div class="catalog-inner">
-									<div class="catalog-icons">
-										<a href="" class="catalog-up"></a>
-										<a href="" class="catalog-fav"></a>
-									</div>
-									<div class="catalog-img">
-										<div class="catalog-img-slide"><a href=""><img src="{% static 'images/media/c1.jpg' %}" alt=""></a></div>
-										<div class="catalog-img-slide"><a href=""><img src="{% static 'images/media/c2.jpg' %}" alt=""></a></div>
-									</div>
-									<div class="catalog-category"><a href="">Еврокнижка</a></div>
-									<div class="catalog-name"><a href="">Фиджи</a></div>
-									<div class="catalog-price">5 500 ₽</div>
-									<div class="catalog-hidden">
-										<div class="catalog-buttons">
-											<a href="{% url 'cntc'%}" class="button-min">Купить</a>
-											<a href="{% url 'cart'%}" class="button-min button-light">в корзину</a>
-										</div>
-										<div class="catalog-size">
-											<div class="size-title">Габаритные размеры</div>
-											<div class="size-line">
-												<div class="size-item">Длина <br>233см</div>
-												<div class="size-item">Ширина <br>107см</div>
-												<div class="size-item">Высота <br>90см</div>
-											</div>
-										</div>
-										<div class="catalog-size">
-											<div class="size-title">Спальное место</div>
-											<div class="size-line">
-												<div class="size-item">Длина <br>233см</div>
-												<div class="size-item">Ширина <br>107см</div>
-												<div class="size-item">Высота <br>90см</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="catalog-slide">
-							<div class="catalog-item">
-								<div class="catalog-inner">
-									<div class="catalog-icons">
-										<a href="" class="catalog-up"></a>
-										<a href="" class="catalog-fav"></a>
-									</div>
-									<div class="catalog-img">
-										<div class="catalog-img-slide"><a href=""><img src="{% static 'images/media/c1.jpg' %}" alt=""></a></div>
-										<div class="catalog-img-slide"><a href=""><img src="{% static 'images/media/c2.jpg' %}" alt=""></a></div>
-									</div>
-									<div class="catalog-category"><a href="">Еврокнижка</a></div>
-									<div class="catalog-name"><a href="">Фиджи</a></div>
-									<div class="catalog-price">5 500 ₽</div>
-									<div class="catalog-hidden">
-										<div class="catalog-buttons">
-											<a href="{% url 'cntc'%}" class="button-min">Купить</a>
-											<a href="{% url 'cart'%}" class="button-min button-light">в корзину</a>
-										</div>
-										<div class="catalog-size">
-											<div class="size-title">Габаритные размеры</div>
-											<div class="size-line">
-												<div class="size-item">Длина <br>233см</div>
-												<div class="size-item">Ширина <br>107см</div>
-												<div class="size-item">Высота <br>90см</div>
-											</div>
-										</div>
-										<div class="catalog-size">
-											<div class="size-title">Спальное место</div>
-											<div class="size-line">
-												<div class="size-item">Длина <br>233см</div>
-												<div class="size-item">Ширина <br>107см</div>
-												<div class="size-item">Высота <br>90см</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+						{% endif%}
+					{%endfor%}
+
 				</div>
+
 				<div class="promo">
 					<h2 class="title">Хиты продаж</h2>
 					<div class="promo-block">

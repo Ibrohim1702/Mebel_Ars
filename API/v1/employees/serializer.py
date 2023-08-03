@@ -1,9 +1,9 @@
 from rest_framework import serializers
 
-from sayt.models import Employees
+from sayt.models import User
 
 
 class CtgSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Employees
+        model = User
         fields = "__all__"

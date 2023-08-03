@@ -3,11 +3,11 @@ from django.shortcuts import render, redirect
 
 from dashboard.ctg.forms import CtgForm
 from dashboard.models import Category
-from sayt.models import Employees
+from sayt.models import User
 
 
 def list(requests):
-    ctgs = Employees.objects.all()
+    ctgs = User.objects.all()
     ctx = {
         "ctgs": ctgs
     }
@@ -15,7 +15,7 @@ def list(requests):
 
 
 def detail(requests, pk):
-    ctg = Employees.objects.get(pk=pk)
+    ctg = User.objects.get(pk=pk)
     ctx = {
         "ctg": ctg
     }
@@ -41,7 +41,7 @@ def add(requests):
 
 @staff_member_required(login_url="dash_login")
 def edit(requests, pk):
-    root = Employees.objects.get(pk=pk)
+    root = User.objects.get(pk=pk)
     forms = CtgForm(instance=root)
 
     if requests.POST:
@@ -61,5 +61,5 @@ def edit(requests, pk):
 
 @staff_member_required(login_url="dash_login")
 def delete(requests, pk):
-    Employees.objects.get(pk=pk).delete()
+    User.objects.get(pk=pk).delete()
     return redirect("ctg_list")

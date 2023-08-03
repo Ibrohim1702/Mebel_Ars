@@ -10,6 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 
 from account.models import User, OTP
+from dashboard.models import Product, Likes
 from .serializer import UserSerializer
 from .services import regis, loqinapi, code_decode, send_sms, check_otp_expire
 
@@ -112,6 +113,49 @@ class AuthView(GenericAPIView):
             return Response({
                 "Error": "Bunday method yo`q"
             })
+
+
+class LikeView(GenericAPIView):
+    authentication_classes = TokenAuthentication,
+    permission_classes = IsAuthenticated,
+
+    def post(self, requests):
+        data = requests.data
+        if 'product_id' not in data or 'status' not in data:
+            return Response({
+                "Error": "data to'lliq emas"
+            })
+        prod = Product.objects.filter(pk=data['product_id']).first()
+        if not prod:
+            return Response({
+                "Error": "bunaqa prod yo"
+            })
+        root = Likes.objects.get_or_create(prod=prod, user=requests.user)[0]
+        # default bazadagi holati
+        likemi = root.like
+        dismi = root.dislike
+        if data['status'] == 'like':
+            likemi = True
+            dismi = False
+        elif data['status'] == 'dis':
+            likemi = False
+            dismi = True
+
+        root.like = likemi
+        root.dislike = dismi
+        root.save()
+
+        return Response({
+            "result": {
+                "prod_id": prod.id,
+                "user_id": requests.user.id,
+                "like": root.like,
+                "dis": root.dislike
+            }
+        })
+
+
+
 
 
 

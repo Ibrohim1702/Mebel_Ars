@@ -5,7 +5,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication
 from API.v1.employees.serializer import CtgSerializer
-from sayt.models import Employees
+from sayt.models import User
 
 
 def format(data):
@@ -18,19 +18,19 @@ def format(data):
     ])
 
 
-class EmployeesView(GenericAPIView):
+class UserView(GenericAPIView):
     serializer_class = CtgSerializer
     permission_classes = (IsAuthenticated, )
-    authentication_classes = (TokenAuthentication)
+    authentication_classes = (TokenAuthentication,)
 
     def get(self, requests, pk=None, *args, **kwargs):
         if pk:
-            emp = Employees.objects.get(pk=pk)
+            emp = User.objects.get(pk=pk)
             return Response({
                 "item": format(emp)
             })
 
-        emps = Employees.objects.all()
+        emps = User.objects.all()
         l = []
         for i in emps:
             l.append(format(i))
@@ -53,7 +53,7 @@ class EmployeesView(GenericAPIView):
 
     def put(self, requests, pk, *args, **kwargs):
         data = requests.data
-        root = Employees.objects.filter(pk=pk).first()
+        root = User.objects.filter(pk=pk).first()
 
         if not root:
             return Response({
@@ -68,7 +68,7 @@ class EmployeesView(GenericAPIView):
         })
 
     def delete(self,requests, pk, *args, **kwargs):
-        root = Employees.objects.filter(pk=pk).first()
+        root = User.objects.filter(pk=pk).first()
         root.delete()
         return Response({
             "result": f"{pk} Employer deleted"

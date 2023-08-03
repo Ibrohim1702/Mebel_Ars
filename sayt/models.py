@@ -1,14 +1,15 @@
 from django.db import models
 
+from dashboard.models import Category, Product
+
 
 # Create your models here.
 
 
-class Employees(models.Model):
-    ism_familya = models.CharField(max_length=256)
+class User(models.Model):
+    Ism = models.CharField(max_length=256)
+    Familiya = models.CharField(max_length=256)
     yoshi = models.IntegerField(null=True)
-    lavozimi = models.CharField(max_length=256)
-    salary = models.IntegerField()
     city = models.CharField(choices=[
         ("Toshkent", "Toshkent"),
         ("Andijon", "Andijon"),
@@ -26,7 +27,7 @@ class Employees(models.Model):
     ], max_length=125, null=True)
 
     def __str__(self):
-        return self.ism_familya
+        return self.Ism
 
 
 class Contact(models.Model):
@@ -39,5 +40,39 @@ class Contact(models.Model):
         return f"{self.name} - {self.phone}"
 
 
-class Bascade(models.Model):
-    pass
+class Basket(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    price = models.IntegerField(default=0)
+    create_date = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        self.price = int(self.product.price) * int(self.quantity)
+        return super(Basket, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.price
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

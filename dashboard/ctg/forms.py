@@ -1,10 +1,10 @@
 from django import forms
 
-from sayt.models import Employees
+from sayt.models import User
 
 
 class CtgForm(forms.ModelForm):
     class Meta:
-        model = Employees
+        model = User
         fields = "__all__"
 
